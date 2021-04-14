@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 
 async function start () {
     try {
-        await mongoose.connect( "mongodb+srv://lumbago:Gleb1iPad@cluster0.kq2qy.mongodb.net/WeWatchMobile?retryWrites=true&w=majority", {
+        await mongoose.connect( config.get('mongoUri'), {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useCreateIndex: true
