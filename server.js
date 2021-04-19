@@ -32,10 +32,6 @@ async function start () {
             useCreateIndex: true
         } );
 
-        app.get('/', (req, res) => {
-            res.sendFile(__dirname + '/index.html')
-        });
-
         server.listen(PORT, () => console.log(`Hi - server started on port ${PORT}`));
 
         //Socet.io connection settings  
