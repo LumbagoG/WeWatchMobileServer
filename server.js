@@ -1,10 +1,15 @@
+const http = require('http');   
 const express = require('express');
+const app = express();
+const server = http.createServer(app)
 const config = require('config');
 const mongoose = require('mongoose');
 
-let cors = require('cors');
+//Import CORS
+const cors = require('cors');
 
-const app = express();
+//Import Socet
+const io = require('socket.io')(server);
 
 //Use CORS
 app.use(cors());
@@ -27,7 +32,29 @@ async function start () {
             useCreateIndex: true
         } );
 
-        app.listen(PORT, () => console.log(`Hi - server started on port ${PORT}`));
+        app.get('/', (req, res) => {
+            res.sendFile(__dirname + '/index.html')
+        });
+
+        server.listen(PORT, () => console.log(`Hi - server started on port ${PORT}`));
+
+        //Socet.io connection settings  
+        io.on('connection', (socket) => {
+            console.log('User has been connected')
+
+            socket.on('chat message', (msg) => {
+                console.log('message: ' + msg);
+                
+                io.emit('chat message', {
+                    message: msg
+                });
+            });
+        
+            socket.on('disconnect', () => { 
+                console.log('User disconnected');
+            });
+        })
+
     } catch ( e ) {
         console.log('Server error', e.message);
         process.exit(1);
