@@ -1,5 +1,5 @@
 {
     "port": 5000,
     "jwtSecret": "gleb",
-    "mongoUri": "mongodb+srv://lumbago:Gleb1iPad@cluster0.kq2qy.mongodb.net/WeWatchMobile?retryWrites=true&w=majority"
+    "mongoUri": "mongodb+srv://lumbago:1q2w3e4r@wewatch.g8t1v.azure.mongodb.net/app?retryWrites=true&w=majority"
 }
