@@ -5,6 +5,8 @@ const server = http.createServer(app)
 const config = require('config');
 const mongoose = require('mongoose');
 
+// "mongoUri": "mongodb+srv://lumbago:Gleb1iPad@cluster0.kq2qy.mongodb.net/WeWatchMobile?retryWrites=true&w=majority"
+
 //Import CORS
 const cors = require('cors');
 
